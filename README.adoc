@@ -1,0 +1,16 @@
+= Content-Security-Policy Report Endpoint
+
+The endpoint receives JSON CSP violation reports and email it.
+
+== Developing on Okteto
+
+.Set gateway URL
+ export OPENFAAS_URL=https://openfaas-ingress-janaka-steph.cloud.okteto.net
+
+.Targeting Okteto Cloud
+ faas up
+
+ okteto up
+
+.Inside Okteto console
+ fwatchdog

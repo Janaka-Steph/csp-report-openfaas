@@ -1,0 +1,26 @@
+name: csp-report
+image: okteto/golang-http-template
+command:
+- bash
+workdir: /home/app/handler
+mountpath: /home/app/handler/function
+persistentVolume:
+  enabled: true
+volumes:
+# This makes the go build cache persistent across development environments
+- /home/app/.cache/go-build/ 
+securityContext:
+  # the user and group that OpenFaaS functions run as
+  runAsUser:  12000
+  runAsGroup: 12000
+  fsGroup:    12000
+  capabilities:
+    add:
+    # enables us to run the debugger inside the pod
+    - SYS_PTRACE
+environment:
+  # overrides the one set by openfaas, enabling build and run
+  - fprocess=go run main.go
+forward:
+- 8080:8080
+- 2345:2345
