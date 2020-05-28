@@ -53,8 +53,7 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	checkError(w, err)
 
 	// Send POST request
-	//req, _ := http.NewRequest("POST", "https://openfaas.rogue-paprika.top/function/send-email", bytes.NewBuffer(resBody))
-	req, _ := http.NewRequest("POST", "https://openfaas-ingress-janaka-steph.cloud.okteto.net/function/send-email", bytes.NewBuffer(resBody))
+	req, _ := http.NewRequest("POST", "https://openfaas.bitcoin-studio.com/function/send-email", bytes.NewBuffer(resBody))
 	req.Header.Set("Content-Type", "application/json")
 	client := &http.Client{}
 	res, err := client.Do(req)
